@@ -1,0 +1,83 @@
+speed = False
+strength = False
+
+def start():
+    o1 = input("You are in prison for something you didn't do! You tried to explain that to the officers and judges, but they was having none of that. You are sentenced lifetime in prison, but you have to escape.\n\nIt is free time, where do you go, the gym or the lunchroom [g/l]\n") 
+    if o1 == "g":
+        gym()
+    elif o1 == "l":
+        lunch()
+    else: 
+        typo(start,'g','l')
+        
+def gym():
+    g1 = input("You go at the gym, do you lift bench press to get stronger or go on the treadmill to get faster? [b/t]\n")
+    if g1 == "b":
+        gymw()
+    elif g1 == "t":
+        gymt()
+    else: 
+        typo(gym,'b','t')
+
+def gymw():
+    death("You bench press some weights and all is fine...until you pick up a weight that is too heavy for you and it crushes you.")
+
+def gymt():
+    global speed
+    speed = True
+    print("You ran on the treadmill and as a result, you became faster.\n")
+    night()
+
+def lunch():
+    l1 = input("You go to the lunchroom. You got lucky, today is Gourmet Day! Today's menu is steak with mashed potatoes, or a whole chicken! What are you going to eat, steak (with mashed potatoes) or a whole chicken? [s/c] \n")
+    if l1 == "s":
+        lunchs()
+    elif l1 == "c":
+        lunchc()
+    else: 
+        typo(lunch,'steak','chicken')
+
+def lunchs():
+    death("You dig in, but suddenly, you start having major allergic reactions. There must have been traces of milk in the mashed potatoes. You are very allergic to milk!")
+
+def lunchc():
+    global strength
+    strength = True
+    print("You start ripping apart your chicken and fine a big strong bone. You tuck it away, it might be of some use later. \n")
+    night()
+
+def night():
+    global speed
+    global strength
+    
+    print("The officers called every prisoner to the center of the prison for the night role call. Finally, they let the prisoners go to their cell for bed. \n You can't wait any longer. You are escaping this night. You go over the plan. You know you can't go now, you have to escape in the dead of night. You finally decide to escape. You quickly find the hair pin hidden under your matress and pick the lock on your cell. It groans open. You quietly slip out and sneak towards the back exit. Unfortunately, a guard spotted you.\n")
+    n1 = input("Do you knock him out or run past him? [k/r] \n")
+    if n1 == "k" and strength == True:
+        print("You remember about that chicken bone you have. You whack the guard on the head with it. He falls unconscious. You then quietly are able to reach the back door and pick it's lock. \n")
+        win()
+    elif n1 == "k" and strength == False:
+        arrest("You try to knock him out, but you aren't strong enough and he puts cuffs on you. He also calls other guards. ")
+        start()
+    elif n1 == "r" and speed == True:
+        arrest("You try and run past him, but he runs after you and calls the other guards. ")
+    elif n1 == "r" and speed == False:
+        arrest("You try to run past the guard, but you aren't that fast. It seems somebody hasn't exercised in a long time. The guard easily catches up to you and he calls for back-up as he pins you down. ")
+    else:
+        typo(night,'knock out','run')
+
+def typo(func,c1,c2):
+    print("Sorry, you can't do that, please enter " + c1 + " or " + c2 + ".\n")
+    func()
+
+def death(cm):
+    print(cm+" The doctors couldn't save you and you died. \n ---------------------------------------------------------------------------------------------------------------------------------------")
+    start()
+
+def arrest(cm):
+    print(cm + "They put you in your cell to await further punishments. \n---------------------------------------------------------------------------------------------------------------------------------------")
+    start
+
+def win():
+    print("You escape the prison, but you will have to live life knowing you are \n                                                             WANTED!")
+
+start()
