@@ -1,0 +1,16 @@
+def gym():
+    g1 = input("You are at the gym do you lift weights to get stronger or go on the treadmill to get faster [weights/treadmill]\n")
+def start():
+    o1 = input("You are in prison for something you didn't do! You tried to explain that to the officer, but he was having none of that. You are sentenced lifetime in prison, but you have to escape.\nIt is free time, where do you go, the gym or the lunchroom [gym/lunchroom]\n") 
+    if o1 == "gym":
+        gym()
+    elif o1 == "lunchroom":
+        print("l")
+def startgame():
+    strength = False
+    speed = False
+    start()
+    while o1 != "gym" or o1 != "lunchroom":
+        print("Sorry, you can't do that, please enter 'gym' or 'lunchroom'.")
+        start()
+startgame()
