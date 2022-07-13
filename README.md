@@ -1,2 +1,2 @@
 # PrisonEcape
-A quick adventure game I made in early 2020.
+I made this quick adventure game in early 2020. It uses inputs, if/else statements, print statements, global variables,and functions.
